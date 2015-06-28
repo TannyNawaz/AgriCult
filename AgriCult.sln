@@ -3,7 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriCult", "AgriCult\AgriCult.csproj", "{3352E109-CEE2-4351-90F3-028228552B07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriCult.Client", "AgriCult\AgriCult.Client.csproj", "{3352E109-CEE2-4351-90F3-028228552B07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6215D03E-457C-474E-965F-35235739F713} = {6215D03E-457C-474E-965F-35235739F713}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriRepository.Entities", "AgriRepository.Interfaces\AgriRepository.Entities.csproj", "{822CDE78-6C1A-4871-8812-20A6FD116423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriRepository.Repository", "AgriRepository.Repository\AgriRepository.Repository.csproj", "{A212A9D8-7393-4CC6-B883-A83EA09E05A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriCult.DAL", "AgriCult.DAL\AgriCult.DAL.csproj", "{EF05CA32-D59C-481C-81F1-91F18F0D5EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriCult.Tests", "AgriCult.Tests\AgriCult.Tests.csproj", "{0AF12B5F-1B93-464D-9E1D-004E257821B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriCult.Service", "AgriCult.Service\AgriCult.Service.csproj", "{6215D03E-457C-474E-965F-35235739F713}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +28,26 @@ Global
 		{3352E109-CEE2-4351-90F3-028228552B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3352E109-CEE2-4351-90F3-028228552B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3352E109-CEE2-4351-90F3-028228552B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{822CDE78-6C1A-4871-8812-20A6FD116423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{822CDE78-6C1A-4871-8812-20A6FD116423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{822CDE78-6C1A-4871-8812-20A6FD116423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{822CDE78-6C1A-4871-8812-20A6FD116423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A212A9D8-7393-4CC6-B883-A83EA09E05A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A212A9D8-7393-4CC6-B883-A83EA09E05A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A212A9D8-7393-4CC6-B883-A83EA09E05A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A212A9D8-7393-4CC6-B883-A83EA09E05A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF05CA32-D59C-481C-81F1-91F18F0D5EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF05CA32-D59C-481C-81F1-91F18F0D5EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF05CA32-D59C-481C-81F1-91F18F0D5EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF05CA32-D59C-481C-81F1-91F18F0D5EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF12B5F-1B93-464D-9E1D-004E257821B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF12B5F-1B93-464D-9E1D-004E257821B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF12B5F-1B93-464D-9E1D-004E257821B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF12B5F-1B93-464D-9E1D-004E257821B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6215D03E-457C-474E-965F-35235739F713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6215D03E-457C-474E-965F-35235739F713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6215D03E-457C-474E-965F-35235739F713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6215D03E-457C-474E-965F-35235739F713}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

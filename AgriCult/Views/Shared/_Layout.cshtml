@@ -22,17 +22,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Capture Advance Details", "Index", "Customer")</li>
-                    <li>@Html.ActionLink("List of Farms", "Index", "Customer")</li>
+                    <li>@Html.ActionLink("Capture Advance Details", "Index", "agri")</li>
+                    <li>@Html.ActionLink("List of Farms", "Index", "agri")</li>
                     
                 </ul>
-                @Html.Partial("_LoginPartial")
+                
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - AgriCult App</p>
         </footer>

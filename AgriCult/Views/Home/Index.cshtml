@@ -1,5 +1,5 @@
 ﻿@{
-Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -12,156 +12,49 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script>
-        $(function () {
-
-            var AgriIndex = 0;
-
-            $("#save").click(function () {
-                if (Modernizr.localstorage) {
-
-                    saveToLocal();
-
-                    if (isOnLine()) {
-                        saveToServer();
-                    }
-                }
-                else {
-                    alert("AgriCult requires local storage.");
-                }
-            });
-
-            function isOnLine() {
-                return navigator.onLine;
-            }
-
-            function getModel(index) {
-                var model = {
-                    Name: "",
-                    Comment: "",
-                    IsDirty: false,
-                    Key: "",
-                    ID: ""
-                };
-
-                if (localStorage[index] != null) {
-                    model = JSON.parse(localStorage[index]);
-                }
-                model.Key = index;
-                return model;
-            }
-
-            function saveToLocal() {
-                var model = getModel(AgriIndex);
-                model.Name = $("#name").val();
-                model.Comment = $("#Comment").val();
-                model.IsDirty = true;
-                localStorage.setItem(AgriIndex,
-                    JSON.stringify(model));
-                logMessage("'" + model.Name + "' saved locally.");
-            }
-
-            function saveToServer() {
-                for (var i = 0; i < localStorage.length; i++) {
-                    var model = getModel(i);
-                    if (model.IsDirty) {
-                        $.post("/customer/save", model,
-                            function (data) {
-                                var key = data.Key;
-                                var m = getModel(key);
-                                m.ID = data.ID;
-                                m.IsDirty = false;
-                                localStorage[key] =
-                                    JSON.stringify(m);
-                                logMessage("'" +
-                                    m.Name + "' saved to server");
-                            });
-                    }
-                }
-            }
-
-            function logMessage(message) {
-                $("#log").append("<li>" + message + "</li>");
-            }
-
-            function clearUI() {
-                $("#name, #Comment").val("");
-                $("#log").html("");
-            }
-
-            function showCustomer() {
-                var model = getModel(AgriIndex);
-                if (model == null) {
-                    clearUI();
-                }
-                else {
-                    $("#name").val(model.Name);
-                    $("#Comment").val(model.Comment);
-                }
-            }
-
-            function reportOnlineStatus() {
-                var status = $("#onlineStatus");
-
-                if (isOnLine()) {
-                    status.text("Online - Connected");
-                    status.
-                        removeClass("offline").
-                        addClass("online");
-                }
-                else {
-                    status.text("Offline - Disconnected");
-                    status.
-                        removeClass("online").
-                        addClass("offline");
-                }
-            }
-
-            window.applicationCache.onupdateready = function (e) {
-                applicationCache.swapCache();
-                window.location.reload();
-            }
-
-            window.addEventListener("online", function (e) {
-                reportOnlineStatus();
-                saveToServer();
-            }, true);
-
-            window.addEventListener("offline", function (e) {
-                reportOnlineStatus();
-            }, true);
-
-            if (isOnLine()) {
-                saveToServer();
-            }
-            showCustomer();
-            reportOnlineStatus();
-
-        });
-    </script>
+    <script src="~/Scripts/JS/jsStorageScript.js"></script>
 </head>
 <body>
     <section>
         <h2> Agriculture Farm - Basic Form Details</h2>
-       <h4> It gets Sync'ed with DB when connected to Internet</h4>
+        <h4 id="statusMessage"> Data gets Sync'ed with DB when connected to Internet</h4>
         <div id="onlineStatus"></div>
 
-        Farm Name<input type="text" placeholder="Name" id="name" />
-        Farm Size<input type="text" placeholder="Size in Acres" id="size" />
-        Specialized In<input type="text" placeholder="Types of Crops/Products cultivated" id="specializedIn" />
-        Location<input type="text" placeholder="Address" id="location" />
-        Owner Details<input type="text" placeholder="Owner" id="owner" />
-        <br/>
-        Comments <textarea id="Comment" placeholder="Comment"></textarea>
+        <label> Farm Name</label> <input type="text" placeholder="Name" id="name" />
+        <br />
+        <label>
+            Farm Size
+        </label><input type="text" placeholder="Size in Acres" id="size" />
+        <br />
+
+        <label>
+            Specialized In
+        </label><input type="text" placeholder="Types of Crops/Products cultivated" id="specializedIn" />
+        <br />
+
+        <label>
+            Location
+        </label><input type="text" placeholder="Address" id="location" />
+        <br />
+
+        <label>
+            Owner Details
+        </label><input type="text" placeholder="Owner" id="owner" />
+        <br />
+        <label>
+            Comments
+        </label><textarea id="Comment" placeholder="Comment"></textarea>
 
         <div id="command">
 
-            <input type="button" value="Save" id="save" />
+            <input type="button" value="Save" id="save" style="float:left;margin:10px 10px 10px 10px;" />
+            <input type="button" value="Clear" id="clearBtn" style="float:left;margin:10px 10px 10px 10px;" />
         </div>
 
         <ul id="log"></ul>
 
-        <div id="version">&copy; @DateTime.Now.Year - AgriCult App</div>
+        
+        <div style="float:right;padding-top:50px;">&copy; @DateTime.Now.Year - AgriCult App</div>
 
     </section>
 </body>
